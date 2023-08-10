@@ -7,7 +7,7 @@ const getPokemon = async (id) => {
         }
 
         const pokemonData = await res.json();
-        console.log(pokemonData);
+
         return pokemonData;
     } catch (err) {
         console.error(err);
