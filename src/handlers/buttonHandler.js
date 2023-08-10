@@ -9,24 +9,27 @@ const buttonHandler = async () => {
     // get pokemon id
     const pokemonId = Number(dom.input.value);
 
-    // check if the same pokemon
-    if (pokemonId === data.id) {
-        return;
-    }
-
-    const pokemonData = await getPokemon(pokemonId);
-
     // check if pokemon DOM exist
     const isContainerExist = document.getElementById('container');
 
     // processing incorrect numbers
     if (pokemonId === '' || pokemonId < 1 || pokemonId > 1010) {
         const errorMessage = createErrorMessage();
-        isContainerExist.remove();
+        if (isContainerExist) {
+            isContainerExist.remove();
+        }
+
         dom.root.append(errorMessage);
         data.id = null;
         return;
     }
+
+    // check if the same pokemon
+    if (pokemonId === data.id) {
+        return;
+    }
+
+    const pokemonData = await getPokemon(pokemonId);
 
     if (!isContainerExist) {
         // create pokemon DOM
