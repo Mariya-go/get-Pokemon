@@ -3,14 +3,11 @@ import createPokemon from '../components/createPokemon.js';
 import getPokemon from '../../apis/getPokemon.js';
 import createAbilities from '../components/createAbilities.js';
 import data from '../data.js';
+import createErrorMessage from '../components/createErrorMessage.js';
 
 const buttonHandler = async () => {
     // get pokemon id
     const pokemonId = Number(dom.input.value);
-
-    if (pokemonId === '' || pokemonId === 0) {
-        return;
-    }
 
     // check if the same pokemon
     if (pokemonId === data.id) {
@@ -21,8 +18,19 @@ const buttonHandler = async () => {
 
     // check if pokemon DOM exist
     const isContainerExist = document.getElementById('container');
+
+    // processing incorrect numbers
+    if (pokemonId === '' || pokemonId < 1 || pokemonId > 1010) {
+        const errorMessage = createErrorMessage();
+        isContainerExist.remove();
+        dom.root.append(errorMessage);
+        data.id = null;
+        return;
+    }
+
     if (!isContainerExist) {
         // create pokemon DOM
+        dom.root.innerHTML = '';
         const pokemonDom = createPokemon(pokemonData);
         dom.root.append(pokemonDom);
     } else {
