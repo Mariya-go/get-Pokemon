@@ -38,11 +38,11 @@ const buttonHandler = async () => {
         dom.root.append(pokemonDom);
     } else {
         // update pokemon DOM
-        const name = document.getElementById('name');
+        const name = isContainerExist.getElementById('name');
         name.innerText = pokemonData.species.name;
-        const image = document.getElementById('img');
+        const image = isContainerExist.getElementById('img');
         image.src = pokemonData.sprites.front_default;
-        const oldAbilities = document.getElementById('list');
+        const oldAbilities = isContainerExist.getElementById('list');
         const newAbilities = createAbilities(pokemonData.abilities);
         oldAbilities.replaceWith(newAbilities);
     }
