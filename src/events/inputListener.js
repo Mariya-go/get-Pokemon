@@ -1,9 +1,13 @@
 import dom from '../dom.js';
-import inputHandler from '../handlers/inputHandler.js';
+import buttonHandler from '../handlers/buttonHandler.js';
 
 const inputListener = () => {
     dom.input.addEventListener('keydown', (e) => {
-        inputHandler(e);
+        if (e.key === 'Enter') {
+            // Cancel the default action
+            e.preventDefault();
+            buttonHandler();
+        }
     });
 };
 

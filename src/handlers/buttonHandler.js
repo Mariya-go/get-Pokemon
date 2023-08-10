@@ -5,7 +5,12 @@ import createAbilities from '../components/createAbilities.js';
 import data from '../data.js';
 
 const buttonHandler = async () => {
+    // get pokemon id
     const pokemonId = Number(dom.input.value);
+
+    if (pokemonId === '' || pokemonId === 0) {
+        return;
+    }
 
     // check if the same pokemon
     if (pokemonId === data.id) {

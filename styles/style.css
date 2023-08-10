@@ -41,6 +41,13 @@ button {
     height: 40px;
 }
 
+.main-img {
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .container {
     display: block;
     margin-left: auto;
